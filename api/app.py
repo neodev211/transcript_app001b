@@ -30,7 +30,7 @@ def transcribe_video():
         full_transcript = " ".join([entry['text'] for entry in transcript])
         return jsonify({"transcription": full_transcript})
     except Exception as e:
-        return jsonify({"error": str(e)}), 500
+        return jsonify({"error": str(e)}), 501
     
 
 # # Este bloque se ejecutará solo si el script se ejecuta directamente (no importado)
