@@ -1,6 +1,7 @@
 # /api/app.py
 from flask import Flask, request, jsonify
 from youtube_transcript_api import YouTubeTranscriptApi
+import os
 
 app = Flask(__name__)
 
@@ -29,3 +30,15 @@ def transcribe_video():
         return jsonify({"transcription": full_transcript})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+    
+
+# Este bloque se ejecutará solo si el script se ejecuta directamente (no importado)
+if __name__ == '__main__':
+    # Verifica si estamos en el entorno de Vercel
+    if 'VERCEL' in os.environ:
+        # En Vercel, no necesitamos ejecutar la app
+        # Vercel se encargará de esto
+        pass
+    else:
+        # Localmente, ejecutamos la app
+        app.run(debug=True)
