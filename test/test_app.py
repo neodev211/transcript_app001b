@@ -6,7 +6,8 @@ import requests
 class TestYoutubeTranscriptionAPI(unittest.TestCase):
 
     def setUp(self):
-        self.base_url = "http://localhost:5000"  # Asumiendo que tu API corre en este puerto
+        # self.base_url = "http://localhost:5000"  # Asumiendo que tu API corre en este puerto
+        self.base_url = "https://transcript-app001b.vercel.app/"
 
     # def test_get_video_id(self):
     #     url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
@@ -20,7 +21,7 @@ class TestYoutubeTranscriptionAPI(unittest.TestCase):
 
     def test_transcribe_video_success(self):
         response = requests.post(f"{self.base_url}/transcribe", 
-                                 json={"url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"})
+                                 json={"url": "https://www.youtube.com/watch?v=kKvK2foOTJM"})
         self.assertEqual(response.status_code, 200)
         data = response.json()
         # print("data", data)
